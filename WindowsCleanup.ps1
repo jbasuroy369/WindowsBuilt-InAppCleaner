@@ -101,7 +101,7 @@ $builtinappstoremove = @(
 
 foreach ($app in $builtinappstoremove) {
     Write-Log "Attempting to remove $app"
-    Get-AppxPackage -Name $app -AllUsers | Remove-AppxPackage
+    Get-AppxPackage -Name $app -AllUsers | Remove-AppxPackage -AllUsers
     Get-AppXProvisionedPackage -Online | Where {$_.DisplayName -eq "$app"} | Remove-AppxProvisionedPackage -Online
     Write-Log "Removed $app"
     Write-Log $SubBreakingLine
